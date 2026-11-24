@@ -1,0 +1,167 @@
+{
+  "productos": [
+    {
+      "id": "2",
+      "nombre": "Mouse inalámbrico",
+      "precio": 80000,
+      "stock": 120
+    },
+    {
+      "id": "3",
+      "nombre": "Monitor 24 pulgadas",
+      "precio": 650000,
+      "stock": 30
+    },
+    {
+      "nombre": "Laptop Pro 14",
+      "precio": 2500000,
+      "stock": 15,
+      "id": "jSk9NwU9xa0"
+    },
+    {
+      "nombre": "Laptop Pro 14",
+      "precio": 2500000,
+      "stock": 15,
+      "id": "TZBWgZxiwLc"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Ana Gómez",
+      "correo": "ana.gomez@example.com",
+      "edad": 28
+    },
+    {
+      "id": "2",
+      "nombre": "Luis Ramírez",
+      "correo": "luis.ramirez@example.com",
+      "edad": 35
+    },
+    {
+      "nombre": "Claudio Lopez",
+      "correo": "Claudio.Lopez@example.com",
+      "edad": 21,
+      "id": "RNrQdviz1H4"
+    }
+  ],
+  "companias": [
+    {
+      "id": "1",
+      "nombre": "TechAndes S.A.S.",
+      "sector": "Tecnología",
+      "ciudad": "Medellín"
+    },
+    {
+      "id": "2",
+      "nombre": "AgroValle",
+      "sector": "Agroindustria",
+      "ciudad": "Cali"
+    },
+    {
+      "nombre": "Atlas S.A.S.",
+      "sector": "Eventos",
+      "ciudad": "Medellín",
+      "id": "5b_3UD8g0Ss"
+    }
+  ],
+  "empleados": [
+    {
+      "id": "1",
+      "nombre": "Carlos Pérez",
+      "cargo": "Desarrollador Backend",
+      "salario": 6500000
+    },
+    {
+      "id": "2",
+      "nombre": "Laura Torres",
+      "cargo": "Diseñadora UX",
+      "salario": 5200000
+    }
+  ],
+  "clientes": [
+    {
+      "id": "1",
+      "nombre": "María López",
+      "telefono": "3001234567",
+      "direccion": "Calle 10 # 43-20, Medellín"
+    },
+    {
+      "id": "2",
+      "nombre": "Jorge Díaz",
+      "telefono": "3109876543",
+      "direccion": "Carrera 7 # 72-10, Bogotá"
+    }
+  ],
+  "proveedores": [
+    {
+      "id": "1",
+      "nombre": "Distribuciones Andinas",
+      "contacto": "contacto@andinas.co",
+      "ciudad": "Bogotá"
+    },
+    {
+      "id": "2",
+      "nombre": "Insumos del Norte",
+      "contacto": "ventas@insumosnorte.co",
+      "ciudad": "Barranquilla"
+    }
+  ],
+  "libros": [
+    {
+      "id": "1",
+      "titulo": "Cien años de soledad",
+      "autor": "Gabriel García Márquez",
+      "anio": 1967
+    },
+    {
+      "id": "2",
+      "titulo": "La vorágine",
+      "autor": "José Eustasio Rivera",
+      "anio": 1924
+    }
+  ],
+  "cursos": [
+    {
+      "id": "1",
+      "nombre": "Introducción a Node.js",
+      "duracion": "40 horas",
+      "nivel": "Básico"
+    },
+    {
+      "id": "2",
+      "nombre": "Bases de datos con SQL",
+      "duracion": "30 horas",
+      "nivel": "Intermedio"
+    }
+  ],
+  "vehiculos": [
+    {
+      "id": "1",
+      "marca": "Renault",
+      "modelo": "Duster 2024",
+      "placa": "ABC123"
+    },
+    {
+      "id": "2",
+      "marca": "Mazda",
+      "modelo": "CX-30 2025",
+      "placa": "XYZ789"
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "1",
+      "descripcion": "Pedido de 3 laptops y 2 monitores",
+      "total": 9500000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "2",
+      "descripcion": "Pedido de 10 mouse",
+      "total": 800000,
+      "estado": "enviado"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

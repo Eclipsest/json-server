@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "a72ea998-2fa5-4908-b988-91a991921b84",
+		"name": "Pedidos",
+		"description": "CRUD del recurso /productos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "60384368",
+		"_collection_link": "https://felipeperezvargas7-1268962.postman.co/workspace/Felipe-P%25C3%25A9rez's-Workspace~6393366d-a172-49d8-802e-dcdcfa83f380/collection/60384368-a72ea998-2fa5-4908-b988-91a991921b84?action=share&source=collection_link&creator=60384368"
+	},
+	"item": [
+		{
+			"name": "Listar Pedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pedidos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Pedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+							"const data = pm.response.json();",
+							"const newId = data.id || data._id || (data.data && (data.data.id || data.data._id));",
+							"if (newId) { pm.collectionVariables.set('id', newId); }"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"descripcion\": \"Pedido de 10 teclados\",\n        \"total\": 1000000,\n        \"estado\": \"pendiente\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pedidos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Pedidos por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pedidos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pedidos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Pedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"descripcion\": \"Pedido de 8 teclados\",\n        \"total\": 800000,\n        \"estado\": \"pendiente\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pedidos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pedidos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar parcialmente Pedidos (PATCH)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"estado\":\"enviado\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pedidos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pedidos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Pedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pedidos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pedidos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

@@ -1,10 +1,10 @@
 {
   "productos": [
     {
-      "id": "2",
-      "nombre": "Mouse inalámbrico",
-      "precio": 80000,
-      "stock": 120
+      "nombre": "Laptop Pro 14 (Actualizada)",
+      "precio": 2350000,
+      "stock": 20,
+      "id": "2"
     },
     {
       "id": "3",
@@ -23,6 +23,12 @@
       "precio": 2500000,
       "stock": 15,
       "id": "TZBWgZxiwLc"
+    },
+    {
+      "nombre": "Laptop Pro 14 (Actualizada)",
+      "precio": 2350000,
+      "stock": 20,
+      "id": "26eT1ci2BdI"
     }
   ],
   "usuarios": [
@@ -77,6 +83,12 @@
       "nombre": "Laura Torres",
       "cargo": "Diseñadora UX",
       "salario": 5200000
+    },
+    {
+      "nombre": "Ronaldo de Jesus (Actualizado)",
+      "cargo": "Desarrollador Backend y Frontend",
+      "salario": 7100000,
+      "id": "eiDUhYrwdNI"
     }
   ],
   "clientes": [
@@ -91,6 +103,12 @@
       "nombre": "Jorge Díaz",
       "telefono": "3109876543",
       "direccion": "Carrera 7 # 72-10, Bogotá"
+    },
+    {
+      "nombre": "John Arley Restrepo",
+      "telefono": "322626767",
+      "direccion": "Calle 22 # 45-39, Medellín",
+      "id": "Z85B9R9YKd4"
     }
   ],
   "proveedores": [

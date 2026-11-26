@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "2c68072d-fc40-44fb-8e3e-f97460fa8dad",
+		"name": "Vehiculos",
+		"description": "CRUD del recurso /productos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "60384368",
+		"_collection_link": "https://felipeperezvargas7-1268962.postman.co/workspace/Felipe-P%25C3%25A9rez's-Workspace~6393366d-a172-49d8-802e-dcdcfa83f380/collection/60384368-2c68072d-fc40-44fb-8e3e-f97460fa8dad?action=share&source=collection_link&creator=60384368"
+	},
+	"item": [
+		{
+			"name": "Listar vehiculos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/vehiculos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehiculos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear vehiculos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+							"const data = pm.response.json();",
+							"const newId = data.id || data._id || (data.data && (data.data.id || data.data._id));",
+							"if (newId) { pm.collectionVariables.set('id', newId); }"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"marca\": \"Renault\",\n        \"modelo\": \"Logan 2026\",\n        \"placa\": \"LOR911\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/vehiculos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehiculos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener vehiculos por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/vehiculos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehiculos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar vehiculos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"marca\": \"Renault (Actualizado)\",\n        \"modelo\": \"Logan 1.6 2026\",\n        \"placa\": \"LOR911\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/vehiculos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehiculos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar parcialmente vehiculos (PATCH)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"placa\":\"LOR111\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/vehiculos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehiculos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar vehiculos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/vehiculos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehiculos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

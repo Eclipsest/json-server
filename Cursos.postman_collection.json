@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "8f2d68d0-890b-4f2d-9eec-46d3678974ac",
+		"name": "Cursos",
+		"description": "CRUD del recurso /productos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "60384368",
+		"_collection_link": "https://felipeperezvargas7-1268962.postman.co/workspace/Felipe-P%25C3%25A9rez's-Workspace~6393366d-a172-49d8-802e-dcdcfa83f380/collection/60384368-8f2d68d0-890b-4f2d-9eec-46d3678974ac?action=share&source=collection_link&creator=60384368"
+	},
+	"item": [
+		{
+			"name": "Listar Cursos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/cursos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cursos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+							"const data = pm.response.json();",
+							"const newId = data.id || data._id || (data.data && (data.data.id || data.data._id));",
+							"if (newId) { pm.collectionVariables.set('id', newId); }"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Introducción a Json-server\",\n      \"duracion\": \"20 horas\",\n      \"nivel\": \"Básico\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cursos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Cursos por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/cursos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cursos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Cursos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Introducción a Json-server (Actualizado)\",\n      \"duracion\": \"32 horas\",\n      \"nivel\": \"Avanzado\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cursos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cursos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar parcialmente Cursos (PATCH)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"duracion\": \"50 horas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cursos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cursos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Cursos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/cursos/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cursos",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

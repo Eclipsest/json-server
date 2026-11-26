@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "c6ce5150-6ac1-482f-a947-1968d65f78a4",
+		"name": "Empleados",
+		"description": "CRUD del recurso /productos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "60384368",
+		"_collection_link": "https://felipeperezvargas7-1268962.postman.co/workspace/Felipe-P%25C3%25A9rez's-Workspace~6393366d-a172-49d8-802e-dcdcfa83f380/collection/60384368-c6ce5150-6ac1-482f-a947-1968d65f78a4?action=share&source=collection_link&creator=60384368"
+	},
+	"item": [
+		{
+			"name": "Listar Empleados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/empleados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"empleados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Empleados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+							"const data = pm.response.json();",
+							"const newId = data.id || data._id || (data.data && (data.data.id || data.data._id));",
+							"if (newId) { pm.collectionVariables.set('id', newId); }"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"nombre\": \"Ronaldo de Jesus\",\n      \"cargo\": \"Desarrollador Frontend\",\n      \"salario\": 7000000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/empleados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"empleados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Empleados por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/empleados/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"empleados",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Empleados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Ronaldo de Jesus (Actualizado)\",\n    \"cargo\": \"Desarrollador Frontend\",\n    \"salario\": 7100000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/empleados/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"empleados",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar parcialmente Empleados (PATCH)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"cargo\": \"Desarrollador Backend y Frontend\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/empleados/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"empleados",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Empleados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/empleados/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"empleados",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "6c4ec3e7-3f3b-4143-adb7-c8dc794dccc0",
+		"name": "Clientes",
+		"description": "CRUD del recurso /productos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "60384368",
+		"_collection_link": "https://felipeperezvargas7-1268962.postman.co/workspace/Felipe-P%25C3%25A9rez's-Workspace~6393366d-a172-49d8-802e-dcdcfa83f380/collection/60384368-6c4ec3e7-3f3b-4143-adb7-c8dc794dccc0?action=share&source=collection_link&creator=60384368"
+	},
+	"item": [
+		{
+			"name": "Listar clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+							"const data = pm.response.json();",
+							"const newId = data.id || data._id || (data.data && (data.data.id || data.data._id));",
+							"if (newId) { pm.collectionVariables.set('id', newId); }"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"nombre\": \"Arley Restrepo\",\n      \"telefono\": \"310426700\",\n      \"direccion\": \"Calle 11 # 43-20, Medellín\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener clientes por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientes/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientes",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"nombre\": \"Arley Restrepo\",\n      \"telefono\": \"322626767\",\n      \"direccion\": \"Calle 22 # 45-39, Medellín\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientes/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientes",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar parcialmente clientes (PATCH)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"nombre\": \"John Arley Restrepo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientes/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientes",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Código de estado esperado', function () { pm.expect(pm.response.code).to.be.oneOf([200, 204]); });"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientes/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientes",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
